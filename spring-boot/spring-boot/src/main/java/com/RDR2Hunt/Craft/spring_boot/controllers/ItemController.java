@@ -1,5 +1,6 @@
 package com.RDR2Hunt.Craft.spring_boot.controllers;
 
+import com.RDR2Hunt.Craft.spring_boot.dto.ItemDTO;
 import com.RDR2Hunt.Craft.spring_boot.models.Item;
 import com.RDR2Hunt.Craft.spring_boot.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,28 +12,35 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/items")
+@CrossOrigin("*")
 public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @GetMapping("/getAll")
-    public List<Item> getAll() {
-        return itemService.getAll();
+    @GetMapping("/all")
+    public ResponseEntity<List<ItemDTO>> getAllItems() {
+        List<ItemDTO> items = itemService.getAllItemDTOs();
+        return ResponseEntity.ok(items);
     }
 
-    @GetMapping("/getByNombre")
-    public Optional<Item> getByNombre(@RequestParam String nombre) {
-        return itemService.getByNombre(nombre);
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<Item> getItemByNombre(@PathVariable String nombre) {
+        Optional<Item> itemOptional = itemService.getItemByNombre(nombre);
+        return itemOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public Item guardar(@RequestBody Item item) {
-        return itemService.guardar(item);
+    @PostMapping("/save")
+    public ResponseEntity<Item> saveItem(@RequestBody Item item) {
+        Item savedItem = itemService.saveItem(item);
+        return ResponseEntity.ok(savedItem);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        itemService.eliminar(id);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+        if (!itemService.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        itemService.deleteItem(id);
         return ResponseEntity.noContent().build();
     }
 }
