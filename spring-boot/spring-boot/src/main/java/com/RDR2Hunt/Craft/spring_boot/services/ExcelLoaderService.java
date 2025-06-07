@@ -19,11 +19,11 @@ import java.util.*;
 @Transactional
 public class ExcelLoaderService {
 
-    private final ItemRepository itemRepo;
-    private final MaterialRepository materialRepo;
-    private final TipoRepository tipoRepo;
-    private final OutfitRepository outfitRepo;
-    private final ItemMaterialRepository itemMaterialRepo;
+    private ItemRepository itemRepo;
+    private  MaterialRepository materialRepo;
+    private TipoRepository tipoRepo;
+    private OutfitRepository outfitRepo;
+    private ItemMaterialRepository itemMaterialRepo;
 
     @PersistenceContext
     private EntityManager entityManager;

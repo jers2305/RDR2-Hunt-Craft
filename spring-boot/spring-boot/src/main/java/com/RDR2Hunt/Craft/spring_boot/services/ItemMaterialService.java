@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ItemMaterialService {
 
-    private final ItemMaterialRepository itemMaterialRepository;
+    private ItemMaterialRepository itemMaterialRepository;
 
     public List<ItemMaterialDTO> getAllItemMaterials() {
         return itemMaterialRepository.findAll().stream().map(im -> {

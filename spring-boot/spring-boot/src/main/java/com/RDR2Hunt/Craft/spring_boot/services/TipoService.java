@@ -4,6 +4,7 @@ import com.RDR2Hunt.Craft.spring_boot.dto.TipoDTO;
 import com.RDR2Hunt.Craft.spring_boot.models.Tipo;
 import com.RDR2Hunt.Craft.spring_boot.repositories.TipoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class TipoService {
-
+    @Autowired
     private final TipoRepository tipoRepository;
 
     public List<TipoDTO> getAllTipos() {

@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemMaterialController {
 
-    private final ItemMaterialService itemMaterialService;
+    private ItemMaterialService itemMaterialService;
 
     @GetMapping("/all")
     public ResponseEntity<List<ItemMaterialDTO>> getAll() {

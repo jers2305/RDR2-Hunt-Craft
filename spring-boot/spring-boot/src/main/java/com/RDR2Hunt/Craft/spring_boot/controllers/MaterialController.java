@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MaterialController {
 
-    private final MaterialService materialService;
+    private MaterialService materialService;
 
     @GetMapping("/all")
     public ResponseEntity<List<MaterialDTO>> getAll() {

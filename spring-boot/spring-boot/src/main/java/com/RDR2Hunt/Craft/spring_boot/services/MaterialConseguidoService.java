@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MaterialConseguidoService {
-    private final MaterialConseguidoRepository repo;
+    private MaterialConseguidoRepository repo;
 
     public List<MaterialConseguido> getByUsuario(Long usuarioId) {
         return repo.findByUsuarioId(usuarioId);

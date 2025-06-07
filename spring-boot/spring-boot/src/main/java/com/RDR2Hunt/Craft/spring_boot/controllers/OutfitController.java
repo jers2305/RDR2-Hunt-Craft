@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OutfitController {
 
-    private final OutfitService outfitService;
+    private OutfitService outfitService;
 
     @GetMapping("/all")
     public ResponseEntity<List<OutfitDTO>> getAll() {

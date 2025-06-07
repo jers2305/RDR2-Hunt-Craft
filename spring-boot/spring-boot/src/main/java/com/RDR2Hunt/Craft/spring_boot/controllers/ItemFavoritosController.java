@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class ItemFavoritosController {
-    private final ItemFavoritoService service;
+    private ItemFavoritoService service;
 
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<ItemFavorito>> getByUsuario(@PathVariable Long usuarioId) {

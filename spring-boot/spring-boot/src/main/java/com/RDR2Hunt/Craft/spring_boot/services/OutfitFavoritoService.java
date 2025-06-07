@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OutfitFavoritoService {
-    private final OutfitFavoritoRepository repo;
+    private OutfitFavoritoRepository repo;
 
     public List<OutfitFavorito> getByUsuario(Long usuarioId) {
         return repo.findByUsuarioId(usuarioId);

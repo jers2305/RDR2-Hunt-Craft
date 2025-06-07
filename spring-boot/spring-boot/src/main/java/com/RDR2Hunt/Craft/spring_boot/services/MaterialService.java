@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MaterialService {
 
-    private final MaterialRepository materialRepository;
+    private MaterialRepository materialRepository;
 
     public List<MaterialDTO> getAllMaterials() {
         return materialRepository.findAll().stream().map(material -> {

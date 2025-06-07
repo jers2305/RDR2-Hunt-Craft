@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OutfitService {
 
-    private final OutfitRepository outfitRepository;
+    private OutfitRepository outfitRepository;
 
     public List<OutfitDTO> getAllOutfits() {
         return outfitRepository.findAll().stream().map(outfit -> {

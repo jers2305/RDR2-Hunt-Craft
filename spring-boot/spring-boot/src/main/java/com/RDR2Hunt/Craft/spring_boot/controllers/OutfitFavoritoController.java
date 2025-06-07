@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class OutfitFavoritoController {
-    private final OutfitFavoritoService service;
+    private OutfitFavoritoService service;
 
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<OutfitFavorito>> getByUsuario(@PathVariable Long usuarioId) {

@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TipoController {
 
-    private final TipoService tipoService;
+    private TipoService tipoService;
 
     @GetMapping("/all")
     public ResponseEntity<List<TipoDTO>> getAll() {

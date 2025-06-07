@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class MaterialConseguidoController {
-    private final MaterialConseguidoService service;
+    private  MaterialConseguidoService service;
 
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<MaterialConseguido>> getByUsuario(@PathVariable Long usuarioId) {

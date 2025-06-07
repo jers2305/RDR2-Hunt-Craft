@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ItemCrafteadoService {
-    private final ItemCrafteadoRepository repo;
+    private ItemCrafteadoRepository repo;
 
     public List<ItemCrafteado> getByUsuario(Long usuarioId) {
         return repo.findByUsuarioId(usuarioId);
