@@ -34,6 +34,21 @@ public class ItemService {
     public boolean existsById(Long id) {
         return itemRepository.existsById(id);
     }
+    public List<Item> findByOutfitId(Long outfitId) {
+        return itemRepository.findByOutfitId(outfitId);
+    }
+
+    public List<ItemDTO> findByTipoId(Long tipoId) {
+        List<Item> items = itemRepository.findByTipoId(tipoId);
+        return items.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    public List<ItemDTO> findByMaterialId(Long materialId) {
+        List<Item> items = itemRepository.findByMateriales_Id(materialId);
+        return items.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+
     public List<ItemDTO> getAllItemDTOs() {
         return itemRepository.findAll().stream().map(item -> {
             ItemDTO dto = new ItemDTO();
@@ -45,4 +60,25 @@ public class ItemService {
             return dto;
         }).collect(Collectors.toList());
     }
+    public List<ItemDTO> getItemsByOutfitId(Long outfitId) {
+        List<Item> items = itemRepository.findByOutfitId(outfitId);
+        return items.stream().map(item -> {
+            ItemDTO dto = new ItemDTO();
+            dto.setId(item.getId());
+            dto.setNombre(item.getNombre());
+            dto.setTipoNombre(item.getTipo() != null ? item.getTipo().getNombre() : null);
+            dto.setOutfitNombre(item.getOutfit() != null ? item.getOutfit().getNombre() : null);
+            return dto;
+        }).collect(Collectors.toList());
+    }
+    private ItemDTO convertToDTO(Item item) {
+        ItemDTO dto = new ItemDTO();
+        dto.setId(item.getId());
+        dto.setNombre(item.getNombre());
+        dto.setPrecio(item.getPrecio());
+        dto.setTipoNombre(item.getTipo() != null ? item.getTipo().getNombre() : null);
+        dto.setOutfitNombre(item.getOutfit() != null ? item.getOutfit().getNombre() : null);
+        return dto;
+    }
+
 }
